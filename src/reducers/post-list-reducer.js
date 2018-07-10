@@ -25,8 +25,6 @@ export default (state = {}, action) => {
         id: id
       }
     });
-    console.log(id);
-    console.log(newState);
     return newState;
   }
   default:
