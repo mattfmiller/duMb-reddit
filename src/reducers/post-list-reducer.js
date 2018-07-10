@@ -1,8 +1,9 @@
 export default (state = {}, action) => {
+  let newState;
+  const { userName, content, voteValue, timeOpen, id } = action;
   switch (action.type) {
   case 'ADD_POST':
-    const { userName, content, voteValue, timeOpen, id } = action;
-    let newState = Object.assign({}, state, {
+    newState = Object.assign({}, state, {
       [id]: {
         userName: userName,
         content: content,
@@ -12,6 +13,22 @@ export default (state = {}, action) => {
       }
     });
     return newState;
+
+  case 'UPVOTE': {
+    let newVoteValue = action.voteValue + 1;
+    newState = Object.assign({}, state, {
+      [action.id] : {
+        userName: userName,
+        content: content,
+        voteValue: newVoteValue,
+        timeOpen: timeOpen,
+        id: id
+      }
+    });
+    console.log(id);
+    console.log(newState);
+    return newState;
+  }
   default:
     return state;
   }

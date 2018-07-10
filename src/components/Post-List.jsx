@@ -11,7 +11,7 @@ function PostList(props){
         return <Post userName={post.userName}
           content={post.content}
           voteValue={post.voteValue}
-          timeOpen={post.timeOpen}
+          // timeOpen={post.timeOpen.d}
           key={postId}
           postId={postId}/>;
       })}

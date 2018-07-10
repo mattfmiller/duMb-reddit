@@ -5,7 +5,7 @@ describe('postListReducer', () => {
  const samplePost = {
    userName : 'Ryan',
    content : '4b',
-   value : 0,
+   voteValue : 0,
    timeOpen : 1500000000000,
    id: 0
  };
@@ -15,12 +15,12 @@ describe('postListReducer', () => {
   });
 
   test('Should add new post to masterPostList', () => {
-    const { userName, content, value, timeOpen, id } = samplePost;
+    const { userName, content, voteValue, timeOpen, id } = samplePost;
     action = {
       type: 'ADD_POST',
       userName: userName,
       content: content,
-      value: value,
+      voteValue: voteValue,
       timeOpen: timeOpen,
       id: id
     };
@@ -28,9 +28,29 @@ describe('postListReducer', () => {
       [id]: {
         userName: userName,
         content: content,
-        value: value,
+        voteValue: voteValue,
         timeOpen: timeOpen,
         id: id
+      }
+    });
+  });
+  test('Should increment voteValue by 1', () => {
+    const { userName, content, voteValue, timeOpen, id } = samplePost;
+    action = {
+      type: 'UPVOTE',
+      userName: userName,
+      content: content,
+      voteValue: voteValue,
+      timeOpen: timeOpen,
+      id: id
+    };
+    expect(postListReducer({}, action)).toEqual({
+      0: {
+        userName : 'Ryan',
+        content : '4b',
+        voteValue : 1,
+        timeOpen : 1500000000000,
+        id: 0
       }
     });
   });

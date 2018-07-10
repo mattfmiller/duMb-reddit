@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Upvote from './Post-List_Post_Upvote';
 
 function Post(props){
   return(
@@ -9,6 +10,12 @@ function Post(props){
       <h3>{props.content}</h3>
       {/* <p>{props.timeOpen}</p> */}
       <p>Upvotes: {props.voteValue}</p>
+      <Upvote userName={props.userName}
+        content={props.content}
+        voteValue={props.voteValue}
+        // timeOpen={post.timeOpen.d}
+        key={props.key}
+        postId={props.postId} />
     </div>
   );
 }
